@@ -43,6 +43,12 @@ def welcome():
 @app.route("/api/v1.0/precipitation")
 def precipitation():
    '''smth'''
+lastdate = dt.date(2017, 8, 23)-dt.timedelta(days=365)
+
+results = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date>=lastdate).all()
+
+    return results
+    
 @app.route("/api/v1.0/stations")
 def stations():
 
